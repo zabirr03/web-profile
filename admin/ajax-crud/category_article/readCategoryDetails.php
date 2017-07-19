@@ -1,0 +1,38 @@
+<?php
+
+session_start();
+
+// Panggil koneksi database.php untuk koneksi database
+require_once "../../../config/database.php";
+
+// fungsi untuk pengecekan status login user 
+// jika user belum login, alihkan ke halaman login dan tampilkan pesan = 1
+if (empty($_SESSION['username']) && empty($_SESSION['password'])){
+    echo "<meta http-equiv='refresh' content='0; url=index.php?alert=1'>";
+}else{
+
+if(isset($_POST['id']) && isset($_POST['id']) != "")
+{
+   
+    $category_article_id = $_POST['id'];
+
+    
+     $query = mysqli_query($mysqli, "SELECT  * FROM is_category_article WHERE category_article_id = '$category_article_id'")
+                                            or die('Ada kesalahan pada query select : '.mysqli_error($mysqli));
+    $response = array();
+    
+        while ($row = mysqli_fetch_assoc($query)) {
+            $response = $row;
+        }
+    
+    
+    // display JSON data
+    echo json_encode($response);
+}
+else
+{
+    $response['status'] = 200;
+    $response['message'] = "Invalid Request!";
+}
+}
+?>

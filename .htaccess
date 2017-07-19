@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+RewriteEngine on
+
+RewriteRule ^home$ main.php?page=home [L]
+RewriteRule ^file$ main.php?page=file [L]
+RewriteRule ^blog$ main.php?page=blog [L]
+RewriteRule ^services$ main.php?page=services [L]
+RewriteRule ^blog-single-(.*)$ main.php?page=blog-single&id=$1 [L]
+RewriteRule ^detail-view-(.*)$ main.php?page=detail-view&id=$1 [L]
+RewriteRule ^blog-category-(.*)$ main.php?page=blog-category&id=$1 [L]
+
+
+
+Options All -Indexes
+</IfModule>
