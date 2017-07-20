@@ -26,7 +26,7 @@ else {
 		$_SESSION['avatar']	  = $data['avatar'];
 		
 		// lalu alihkan ke halaman user
-		header('location:admin/main.php?module=home');
+		header('location:main.php?module=home');
 	}
 
 	// jika data tidak ada, alihkan ke halaman login dan tampilkan pesan = 1
